@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee shop</title>
+</head>
+<style>
+    body{
+        background-color: peru;
+        text-align: center;
+    }
+    h1{
+        background-color: black;
+        color: peru;
+    }
+    ul {
+    list-style-position:inside;
+}
+</style>
+<body>
+    <h1>Coffee Shop</h1>
+    <img src="https://images.hola.com/imagenes/estar-bien/20190111135512/cafe-beneficioso-perjudicial/0-635-445/cafenutricion-t.jpg?tx=w_680"> </img>
+    <div id="carrito">
+        <h2>Menú</h2>
+        <ul>
+            <li>
+                "Expresso.............$300"
+                <button onclick="agregarProducto('p0', 300)">Agregar al Carrito</button>
+            </li>
+            <li>
+                "Latte....................$500"
+                <button onclick="agregarProducto('p1', 500)">Agregar al Carrito</button>
+            </li>
+            <li>
+                "Cortado...............$400"
+                <button onclick="agregarProducto('p2', 400)">Agregar al Carrito</button>
+            </li>
+            <li>
+                "Capuchino...........$600"
+                <button onclick="agregarProducto('p3', 600)">Agregar al Carrito</button>
+            </li>
+            <li>
+                "Alfajor.................$200"
+                <button onclick="agregarProducto('p4', 200)">Agregar al Carrito</button>
+            </li>
+        </ul>
+        <h2>Carrito de compras:</h2>
+        <ul id="listaCarrito" style="border:2px solid black; border-style: dotted; width: fit-content; margin:auto;"  ></ul>
+
+        <div id="totalCarrito" > 
+            Total: $ 
+            <span id="total">0.00</span>
+        </div>
+        <button onclick="finalizarCompra()">Comprar</button>
+        <button onclick="cancelarCompra()">Cancelar</button>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
