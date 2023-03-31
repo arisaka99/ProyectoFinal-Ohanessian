@@ -1,0 +1,46 @@
+body{
+    background-color: peru;
+    text-align: center;
+}
+h1{
+    background-color: black;
+    color: peru;
+}
+ul {
+list-style-position:inside;
+}
+
+.main__principal{
+    background-image: url(https://static.tumblr.com/5d0e54afb1d9542b8d4f38ca3df6d9bc/qzwdlv3/MNbosz7af/tumblr_static_tumblr_static_4622t31mrfggk8404g48os80c_640.gif);
+    color: white;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    width: 100vw;
+    text-align: center;
+}
+:any-link{
+    color: brown;
+}
+#lorem {
+    border: 1px solid black;
+    padding: 50px;
+    width: 50%;
+    max-width: 800px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+
+  .dark{
+    background-color: black;
+    color: white;
+    border-color:peru;
+    border: peru;
+  }
+  .dark h1{
+    background-color: peru;
+    color: black;
+  }

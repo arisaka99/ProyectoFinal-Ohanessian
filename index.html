@@ -4,46 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee shop</title>
+    <title>Cybercafé Okinawa - Menú</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="shortcut icon" href="./media/favicon.ico">
 </head>
-<style>
-    body{
-        background-color: peru;
-        text-align: center;
-    }
-    h1{
-        background-color: black;
-        color: peru;
-    }
-    ul {
-    list-style-position:inside;
-}
-</style>
 <body>
-    <h1>Coffee Shop</h1>
-    <img src="https://images.hola.com/imagenes/estar-bien/20190111135512/cafe-beneficioso-perjudicial/0-635-445/cafenutricion-t.jpg?tx=w_680"> </img>
-    <div id="carrito">
+    <h1>Cybercafé Okinawa <button id="modoOscuro">L/D</button></h1>
+    <p> <h2> <a class="nav-link" href="./contacto.html">Contacto</a> </h2></p>
+        <img src="./media/cafe.gif" style="width: 900px; height: 600px;" > 
+        <div id="carrito">
         <h2>Menú</h2>
         <ul>
             <li>
                 "Expresso.............$300"
-                <button onclick="agregarProducto('p0', 300)">Agregar al Carrito</button>
+                <button onclick="agregarProducto('Expresso', 300)">Agregar al Carrito</button>
             </li>
             <li>
                 "Latte....................$500"
-                <button onclick="agregarProducto('p1', 500)">Agregar al Carrito</button>
+                <button onclick="agregarProducto('Latte', 500)">Agregar al Carrito</button>
             </li>
             <li>
                 "Cortado...............$400"
-                <button onclick="agregarProducto('p2', 400)">Agregar al Carrito</button>
+                <button onclick="agregarProducto('Cortado', 400)">Agregar al Carrito</button>
             </li>
             <li>
                 "Capuchino...........$600"
-                <button onclick="agregarProducto('p3', 600)">Agregar al Carrito</button>
+                <button onclick="agregarProducto('Capuchino', 600)">Agregar al Carrito</button>
             </li>
             <li>
                 "Alfajor.................$200"
-                <button onclick="agregarProducto('p4', 200)">Agregar al Carrito</button>
+                <button onclick="agregarProducto('Alfajor', 200)">Agregar al Carrito</button>
             </li>
         </ul>
         <h2>Carrito de compras:</h2>
@@ -54,8 +44,14 @@
             <span id="total">0.00</span>
         </div>
         <button onclick="finalizarCompra()">Comprar</button>
-        <button onclick="cancelarCompra()">Cancelar</button>
+        <button id="vaciar">Vaciar</button>
+        <button onclick="historialCompras()">Ver Historial</button>
     </div>
     <script src="main.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    
+
+
 </body>
 </html>
