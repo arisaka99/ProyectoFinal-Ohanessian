@@ -1,15 +1,18 @@
 let carrito = []
 let total = 0
 
+if (localStorage.getItem("modo") === "dark") {
+  document.body.classList.add("dark");
+}
+
 modoOscuro.addEventListener("click",()=>{
   document.body.classList.toggle("dark");
-  if(document.body.classList.contains("dark")){
-    localStorage.setItem("modo", "dark")
-  } else{
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("modo", "dark");
+  } else {
     localStorage.setItem("modo", "light");
   }
-})
-
+});
 
 function agregarProducto(nombre, precio) {
   let producto = {
@@ -107,37 +110,37 @@ function historialCompras() {
 
   let comprasTexto = compras
       .map((compra, index) => {
-          return `Compra ${index + 1}:\nTotal: ${compra.total}\nFecha: ${compra.fecha} Código: ${compra.codigo}`;
+          return `Compra ${index + 1}:<br>Total: ${compra.total}<br>Fecha: ${compra.fecha} Código: ${compra.codigo}`;
       })
-      .join("\n\n");
+      .join("<br><br>");
 
-      swal.fire({
-        title: 'Historial de Compras',
-        html: comprasTexto,
-        color: '#cd853f',
-        icon: 'info',
-        confirmButtonColor: '#cd853f',
-        confirmButtonText: 'Ok',
-        showCancelButton: true,
-        cancelButtonText: 'Eliminar Historial',
-        cancelButtonColor: '#d33'
-      }).then((result) => {
-        if (result.dismiss === Swal.DismissReason.cancel) {
-          
-          localStorage.clear();
-          
-          Swal.fire({
-            title: 'Historial Eliminado',
-            text: 'El historial de compras ha sido eliminado',
-            color: '#cd853f',
-            icon: 'success',
-            confirmButtonColor: '#cd853f',
-            confirmButtonText: 'Ok'
-          });
-        }
-      });
+  swal.fire({
+    title: 'Historial de Compras',
+    html: comprasTexto,
+    color: '#cd853f',
+    icon: 'info',
+    confirmButtonColor: '#cd853f',
+    confirmButtonText: 'Ok',
+    showCancelButton: true,
+    cancelButtonText: 'Eliminar Historial',
+    cancelButtonColor: '#d33'
+  }).then((result) => {
+    if (result.dismiss === Swal.DismissReason.cancel) {
       
+      localStorage.clear();
+      
+      Swal.fire({
+        title: 'Historial Eliminado',
+        text: 'El historial de compras ha sido eliminado',
+        color: '#cd853f',
+        icon: 'success',
+        confirmButtonColor: '#cd853f',
+        confirmButtonText: 'Ok'
+      });
+    }
+  });
 }
+
 
 
 let vaciar = document.getElementById("vaciar");
