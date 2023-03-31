@@ -37,21 +37,44 @@ function agregarProducto(nombre, precio) {
   totalCarrito.innerText = "Total: $" + total.toFixed(2);
 }
 
+function vaciarResp() {
+  console.log("Vaciar carrito");
+  while (listaCarrito.firstChild) {
+    listaCarrito.removeChild(listaCarrito.firstChild);
+  }
 
+  total = 0;
+  totalCarrito.textContent = "Total: $" + total.toFixed(2);
 
+  localStorage.removeItem("carrito");
+  localStorage.removeItem("total");
+
+  listaCarrito.innerHTML = "";
+}
 
 
 function finalizarCompra() {
-    let total = document.getElementById("totalCarrito").innerText;
-    let fecha = new Date().toLocaleDateString();
-    let codeLength = 5;
-    let codigo = Math.random().toString(36).substr(2, codeLength);
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+  let total = document.getElementById("totalCarrito").innerText;
+  let fecha = new Date().toLocaleDateString();
+  let codeLength = 5;
+  let codigo = Math.random().toString(36).substr(2, codeLength);
+
+  if (carrito.length === 0) {
+    swal.fire({
+      title: "No se pudo completar la orden",
+      text: "El carrito de compras está vacío.",
+      icon: "error",
+      confirmButtonColor: '#cd853f',
+      confirmButtonText: 'Ok'
+    });
+  } else {
     let compras = JSON.parse(localStorage.getItem("compras")) || [];
-      compras.push({ total: total, fecha: fecha, codigo: codigo });
-      localStorage.setItem("compras", JSON.stringify(compras));
-    console.log(codigo); 
+    compras.push({ total: total, fecha: fecha, codigo: codigo });
+    localStorage.setItem("compras", JSON.stringify(compras));
     localStorage.setItem("compra", "total: " + total + " - Fecha" + fecha + " - Código: " + codigo);
-    //alert("Su pedido fue realizado exitosamente. Gracias por elegirnos!\n\n" + "Total: " + total + "\nFecha: " + fecha);
+
     swal.fire({
       title: 'Su pedido fue realizado exitosamente',
       text: "Podes retirar tu orden en nuestra sucursal mas cercana con el codigo " + codigo + ', Gracias por elegirnos!' ,
@@ -59,16 +82,14 @@ function finalizarCompra() {
       icon: 'success',
       confirmButtonColor: '#cd853f',
       confirmButtonText: 'Ok',
-      
-        
     }).then((result) => { 
       if (result.isConfirmed) {
-        location.reload();
+        vaciarResp();
       }
-    })
-    
-  
+    });
+  }
 }
+
 function historialCompras() {
   let compras = JSON.parse(localStorage.getItem("compras")) || [];
 
@@ -122,20 +143,6 @@ function historialCompras() {
 let vaciar = document.getElementById("vaciar");
 vaciar.addEventListener("click", vaciarResp);
 
-function vaciarResp() {
-  console.log("Vaciar carrito");
-  while (listaCarrito.firstChild) {
-    listaCarrito.removeChild(listaCarrito.firstChild);
-  }
-
-  total = 0;
-  totalCarrito.textContent = "Total: $" + total.toFixed(2);
-
-  localStorage.removeItem("carrito");
-  localStorage.removeItem("total");
-
-  listaCarrito.innerHTML = "";
-}
 
 /* const producto0 = new producto("Expresso", 300)
 const producto1 = new producto("Latte", 500)
